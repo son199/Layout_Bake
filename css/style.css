@@ -1,0 +1,700 @@
+/* setup ban đầu */
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: son; */
+  /* font-family: son-bold; */
+}
+/* cách cài font đã có sẵn */
+/* @font-face {
+  font-family: son;
+  src: url(../font/NotoSansJP-Black.otf);
+}
+@font-face {
+  font-family: son-bold;
+  src: url(../font/NotoSansJP-Bold.otf);
+} */
+.html {
+  font-size: 16px;
+}
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 0.9375rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.975rem;
+}
+.col {
+  /* width: 25%; */
+  /* tất cả cột phải có padding */
+  padding: 0 0.9375rem;
+}
+.w-full {
+  width: 100% !important;
+}
+.header {
+  background-color: #4e2a84;
+  /* nhận các giá trị  hướng (to right) kế tiếp là dãy màu
+  có thể trải màu theo trục chéo*/
+  /* background-image: linear-gradient(to bottom right, blue, red, brown); */
+}
+.header .logo {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.container .navbar {
+  display: flex;
+}
+.header .navbar a::after {
+  /* đối với after và beffor phải ép kiểu lại thành block 
+  mới có thể chỉ wight height */
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #ff0e83;
+  margin-top: 0.2rem;
+  /* tất cả các thay đổi */
+  /* transition-property: all; */
+  /* thời gian chuyển động */
+  /* transition-duration: 0.3; */
+  /* chiều chuyển động */
+  /* transition-timing-function: ease; */
+  /* transition-delay: 0s; */
+  transition: all 0.3s ease;
+}
+.header .navbar a:hover::after {
+  width: 100%;
+}
+.container .navbar a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-right: 1rem;
+}
+.header .navbar a:hover {
+  color: #ff0e83;
+}
+.header .container {
+  /* flexbox chỉnh theo 2 trục x,y
+  trục chính phụ thuộc theo 
+  flex-direction
+  */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.carousel {
+  background-image: url(../images/b3.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #ffffff;
+  height: 37.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.carousel h1 {
+  color: #ffffff;
+  padding: 1rem 0;
+  font-size: 3rem;
+  font-weight: 700;
+  animation: bounce;
+  /* thời gian */
+  animation-duration: 0.5s;
+  /* kiểu */
+  animation-timing-function: ease;
+  animation-delay: 2s;
+  /* so lan */
+  animation-iteration-count: 4;
+}
+/* .carousel h1::before {
+  content: "The ";
+  color: red;
+}
+.carousel h1::after {
+  content: "!";
+  color: #4e2a84;
+} */
+.carousel .btn {
+  background-color: #ff0e83;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 0.3rem;
+  padding: 0.625rem 1.25rem;
+  margin-top: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+/* intro */
+.intro {
+  color: #ffffff;
+  text-align: center;
+  /* /thay đỏi layout thành dạng lưới */
+  display: grid;
+  /* mỗi cột có diện tích là 1 fr */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.intro .item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.intro .item h1 {
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+}
+.intro .item p {
+  padding: 0 2rem;
+  color: #c1c1c1;
+}
+.intro .item img {
+  display: block;
+  max-width: 100%;
+}
+.intro .item-2 {
+  grid-column: 2 / span 2;
+}
+.intro .item-4 {
+  grid-column: 1 / span 2;
+}
+.intro .item-9 {
+  grid-column: 3 / span 2;
+}
+.intro .item-1 {
+  background-color: #4e2a84;
+  padding: 1rem 0;
+}
+.intro .item-3 {
+  background-color: #ff0e83;
+  padding: 1rem 0;
+}
+.intro .item-4 {
+  background-color: #ff0e83;
+  padding: 1rem 0;
+}
+.intro .item-6 {
+  background-color: #4e2a84;
+  padding: 1rem 0;
+}
+.intro .item-8 {
+  background-color: #4e2a84;
+  padding: 1rem 0;
+}
+
+/* statistic */
+.statistic {
+  padding-top: 3rem;
+}
+.statistic .row {
+  display: flex;
+  /* padding ở cột thì phải margin lại cho về vị trí ban đầu */
+  margin: 0 -0.9375rem;
+  /* justify-content: center; */
+}
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+.statistic .col .item p {
+  animation: counter 5s infinite alternate ease-in-out;
+  counter-reset: num var(--num);
+  counter-reset: num;
+  font: 800 40px system-ui;
+  padding: 2rem;
+}
+.statistic .col .item p::after {
+  content: counter(num);
+}
+
+.statistic .col {
+  width: 25%;
+  /* tất cả cột phải có padding */
+}
+.statistic .item {
+  text-align: center;
+}
+.statistic .col p {
+  color: #4e2a84;
+  font-size: 2rem;
+  padding-bottom: 1.5rem;
+}
+.video {
+  padding-top: 3rem;
+}
+.video .col {
+  width: 50%;
+}
+.video .item video,
+.video .item iframe {
+  width: 100%;
+  height: 21rem;
+}
+.team {
+  background-color: #4e2a84;
+  padding-top: 3rem;
+  margin-top: 3rem;
+}
+.team .row {
+  margin-top: 3rem;
+  /* thuộc tính giúp cho item xuống dòng */
+  flex-wrap: wrap;
+}
+.team .col {
+  width: calc(100% / 3);
+}
+.team .item {
+  /* nhận gái trị đầu tiên theo x 2 theo y
+   3 độ nhè của bóng theo px ,
+   4 dộ rộng của bóng theo px 
+   5 màu của bóng*/
+  box-shadow: 5px 5px 5px #cccccc;
+  position: relative;
+  margin-bottom: 1.875rem;
+  /* những gì thuôc về item thì mất đi khi nào di chuyển lại mới hiện */
+  overflow: hidden;
+}
+.team .item .detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+.team .item .detail h1 {
+  color: #ff0e83;
+  font-size: 1.5rem;
+}
+.team .item .detail span {
+  display: block;
+  margin: 0.5rem 0;
+}
+.team .detail .social {
+  margin-top: 1rem;
+}
+.team .detail .social i {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  width: 2.3rem;
+  height: 2.3rem;
+  text-align: center;
+  margin-right: 0.8rem;
+  line-height: 2.3rem;
+}
+.team .item img {
+  /* fix ảnh bị hỡ */
+  display: block;
+  width: 100%;
+}
+.team .title {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+}
+.team .info {
+  background-color: #ff0e83;
+  color: #ffffff;
+  padding: 1.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.team .item-1 .detail {
+  /* display: none; */
+  /* animation */
+  /* độ trong suốt */
+  /* hiêu ứng fade */
+  opacity: 0;
+  visibility: hidden;
+}
+.team .item-1:hover .detail {
+  opacity: 1;
+  visibility: visible;
+}
+.team .item-2 .detail {
+  /* left: -100%; */
+  transform: translate(-100%, 0);
+}
+.team .item-2:hover .detail {
+  /* left: 0; */
+  /* dùng để thay đổi kích thước của vật thể ,
+  translate di chuyển nhận theo x, y
+  mặc định khi dùng translate lun ở góc toại độ 0,0 */
+  transform: translate(0);
+}
+.team .item-3 .detail {
+  transform: scale(0);
+}
+.team .item-3:hover .detail {
+  transform: scale(1);
+}
+.team .item-4 .detail {
+  transform: scale(0);
+}
+.team .item-4:hover .detail {
+  transform: scale(1) rotate(360deg);
+}
+.team .item-5 .detail {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, -100%);
+}
+.team .item-5:hover .detail {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0);
+}
+.team .item-6 .detail {
+  transform: scale(2);
+  opacity: 0;
+  visibility: hidden;
+}
+.team .item-6:hover .detail {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+.team .item:hover .info {
+  display: none;
+}
+/* contact */
+.contact .form .col {
+  width: 50%;
+}
+.contact .form .form-group {
+  margin-bottom: 0.5rem;
+}
+.contact .form h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 2rem 0;
+}
+/* gọi selecter bằng atribute */
+.contact .form .form-group input[type="text"],
+.contact .form .form-group input[type="email"],
+.contact .form .form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.3125rem solid #666666;
+}
+.contact .form-group button {
+  background-color: #ff0e83;
+  color: #ffffff;
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+}
+.map {
+  margin-top: 2rem;
+}
+/* CSS FOOTER */
+.footer {
+  padding-top: 3rem;
+  background-color: black;
+  color: white;
+  margin-bottom: 3rem;
+}
+.footer .row {
+  display: flex;
+}
+.footer .row .col {
+  width: 25%;
+  padding: 0;
+}
+.footer .row .item {
+  padding: 0 1rem;
+  width: 100%;
+}
+.footer .item h1 {
+  font-size: 1.825rem;
+  color: #ff0e83;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.footer .item p {
+  word-spacing: 3px;
+  letter-spacing: 2px;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+}
+.footer .icon i {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 0.4rem;
+}
+.footer .col .item .day-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #ffffff;
+}
+.footer .item .day-item p,
+.footer .item .day-item span {
+  margin-bottom: 0ch;
+  padding: 0.625rem 0;
+}
+.footer .item .day-item p,
+.footer .item .day-item span {
+  margin-bottom: 0ch;
+  padding: 0.625rem 0;
+}
+.footer .item .day-item-1 span,
+.footer .item .day-item-1 p {
+  padding-top: 0;
+}
+.footer .form input {
+  display: block;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  max-width: 70%;
+}
+.footer .form button {
+  padding: 8px 30px;
+  background-color: #ff0e83;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.footer .copy-right {
+  padding: 1rem 0;
+  text-align: center;
+}
+.footer .copy-right a {
+  color: #ff0e83;
+  text-decoration: none;
+}
+.footer .col .item i:hover {
+  color: #ff0e83;
+  border-color: #ff0e83;
+  cursor: pointer;
+}
+
+/* END CSS FOOTER */
+.sticky i {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: aqua;
+  border: 1px solid;
+  border-color: aqua;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+.sticky {
+  text-align: right;
+}
+
+@keyframes counter {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 495;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, -200px);
+  }
+  80% {
+    opacity: 0.7;
+    visibility: visible;
+    transform: translate(0, 30px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+}
+.tongle-sidebar {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  /* ẩn nút sidebar */
+  display: none;
+}
+/* reponsive */
+/* 992px-1200px */
+@media screen and (max-width: 1200px) {
+}
+/* 768px-992px  */
+@media screen and (max-width: 992px) {
+}
+/* 576px -768px */
+@media screen and (max-width: 768px) {
+  .tongle-sidebar {
+    display: block;
+  }
+  .header .navbar {
+    display: none;
+  }
+  .header .container {
+    justify-content: space-between;
+  }
+  .carousel h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+  }
+  .carousel .btn {
+    padding: 0.625rem 1.4375rem;
+  }
+  .carousel {
+    padding: 0.5rem;
+  }
+  .carousel p {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+  }
+  .intro .item-2,
+  .intro .item-4,
+  .intro .item-9 {
+    /* trở lại ban đầu không gộp cột */
+    grid-column: initial;
+  }
+  .intro .item {
+    border: none;
+  }
+  .statistic .col {
+    width: 50%;
+  }
+  .video .col {
+    width: 100%;
+  }
+  .team .container {
+    width: 80%;
+  }
+  .team .col {
+    width: 50%;
+  }
+  .team .title {
+    font-size: 2rem;
+  }
+  /* .contact .form .col {
+    width: 100%;
+  } */
+  .contact .container {
+    width: 80%;
+  }
+  .map {
+    width: 100%;
+  }
+
+  .footer .row .col {
+    width: 50%;
+  }
+  .footer .col-mr {
+    margin-top: 1.5rem;
+  }
+  .footer .item h1 {
+    font-size: 1.25rem;
+  }
+  .footer .item p {
+    font-size: 1rem;
+  }
+}
+/* < 576px */
+@media screen and (max-width: 576px) {
+  .tongle-sidebar {
+    display: block;
+  }
+  .header .navbar {
+    display: none;
+  }
+  .header .container {
+    justify-content: space-between;
+  }
+  .carousel h1 {
+    font-size: 2rem;
+  }
+  .carousel p {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+  }
+
+  .intro .item-2,
+  .intro .item-4,
+  .intro .item-9 {
+    /* trở lại ban đầu không gộp cột */
+    grid-column: initial;
+  }
+  .intro .item.item-1 p {
+    margin-top: 5rem;
+  }
+
+  .statistic .container .col {
+    width: 50%;
+  }
+  .video .col {
+    width: 100%;
+  }
+  .team .container {
+    width: 90%;
+  }
+  .team .title {
+    font-size: 2rem;
+  }
+  .team .info h1 {
+    font-size: 1.25rem;
+  }
+  .team .col {
+    width: 100%;
+  }
+  .contact .container {
+    width: 100%;
+  }
+  .contact .form .col {
+    width: 100%;
+  }
+  .contact .container h1 {
+    font-size: 2rem;
+  }
+  .footer .row .col {
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+}
